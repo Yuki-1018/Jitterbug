@@ -114,7 +114,9 @@ jobs:
           path: build/jitterbugpair
   build-ubuntu-i686:
     name: JitterbugPair (Ubuntu, i686)
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-18.04
+    container:
+      image: debian:latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -125,7 +127,7 @@ jobs:
           sudo dpkg --add-architecture i386
           sudo apt update
           sudo apt --fix-broken install
-          sudo apt install meson libselinux1-dev:i386 libmount-dev:i386 libglib2.0-0:i386 libglib2.0-dev:i386 libgcrypt-dev:i386 libusbmuxd-dev:i386 libimobiledevice-dev:i386 libunistring-dev:i386 gcc-i686-linux-gnu pkg-config-i686-linux-gnu
+          sudo apt install meson libgcrypt-dev:i386 libusbmuxd-dev:i386 libimobiledevice-dev:i386 libunistring-dev:i386 gcc-i686-linux-gnu pkg-config-i686-linux-gnu
       - name: Build
         run: meson --cross-file crossfiles/i686.txt --prefix /usr --buildtype=release build && cd build && ninja
       - name: Upload
@@ -135,7 +137,9 @@ jobs:
           path: build/jitterbugpair
   build-ubuntu-aarch64:
     name: JitterbugPair (Ubuntu, AArch64)
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-18.04
+    container:
+      image: debian:latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -156,7 +160,9 @@ jobs:
           path: build/jitterbugpair
   build-ubuntu-armv7:
     name: JitterbugPair (Ubuntu, ARMv7)
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-18.04
+    container:
+      image: debian:latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
