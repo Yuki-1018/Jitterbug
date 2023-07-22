@@ -3,7 +3,7 @@ c = 'i686-linux-gnu-gcc'
 cpp = 'i686-linux-gnu-g++'
 ar = 'i686-linux-gnu-gcc-ar'
 strip = 'i686-linux-gnu-strip'
-pkgconfig = 'pkg-config'
+pkgconfig = 'i686-linux-gnu-pkg-config'
 
 [host_machine]
 system = 'linux'
