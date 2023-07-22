@@ -122,8 +122,8 @@ jobs:
           submodules: recursive
       - name: Dependencies
         run: |
-          sudo dpkg --add-architecture i686
-          sudo apt install meson libgcrypt-dev:i686 libusbmuxd-dev:i686 libimobiledevice-dev:i686 libunistring-dev:i686 gcc-i686-linux-gnu pkg-config-i686-linux-gnu
+          sudo dpkg --add-architecture i386
+          sudo apt install meson libgcrypt-dev:i386 libusbmuxd-dev:i386 libimobiledevice-dev:i386 libunistring-dev:i386 gcc-i686-linux-gnu pkg-config-i686-linux-gnu
       - name: Build
         run: meson --cross-file crossfiles/i686.txt --prefix /usr --buildtype=release build && cd build && ninja
       - name: Upload
@@ -160,8 +160,8 @@ jobs:
           submodules: recursive
       - name: Dependencies
         run: |
-          sudo dpkg --add-architecture armel
-          sudo apt install meson libgcrypt-dev:armel libusbmuxd-dev:armel libimobiledevice-dev:armel libunistring-dev:armel gcc-arm-linux-gnueabi pkg-config-arm-linux-gnueabi
+          sudo dpkg --add-architecture armhf
+          sudo apt install meson libgcrypt-dev:armhf libusbmuxd-dev:armhf libimobiledevice-dev:armhf libunistring-dev:armhf gcc-arm-linux-gnueabi pkg-config-arm-linux-gnueabi
       - name: Build
         run: meson --cross-file crossfiles/armv7.txt --prefix /usr --buildtype=release build && cd build && ninja
       - name: Upload
