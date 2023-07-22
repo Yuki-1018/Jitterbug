@@ -122,9 +122,9 @@ jobs:
         uses: actions/checkout@v2
       - name: Dependencies
         run: |
-          sudo dpkg --add-architecture i386
-          sudo apt update
-          sudo apt install git meson libgcrypt-dev:i386 libusbmuxd-dev:i386 libimobiledevice-dev:i386 libunistring-dev:i386 gcc-i686-linux-gnu pkg-config-i686-linux-gnu
+          dpkg --add-architecture i386
+          apt update
+          apt install git meson libgcrypt-dev:i386 libusbmuxd-dev:i386 libimobiledevice-dev:i386 libunistring-dev:i386 gcc-i686-linux-gnu pkg-config-i686-linux-gnu
           git submodule update --init --recursive
       - name: Build
         run: meson --cross-file crossfiles/i686.txt --prefix /usr --buildtype=release build && cd build && ninja
@@ -143,9 +143,9 @@ jobs:
         uses: actions/checkout@v2
       - name: Dependencies
         run: |
-          sudo dpkg --add-architecture arm64
-          sudo apt update
-          sudo apt install git meson libgcrypt-dev:arm64 libusbmuxd-dev:arm64 libimobiledevice-dev:arm64 libunistring-dev:arm64 gcc-aarch64-linux-gnu pkg-config-aarch64-linux-gnu
+          dpkg --add-architecture arm64
+          apt update
+          apt install git meson libgcrypt-dev:arm64 libusbmuxd-dev:arm64 libimobiledevice-dev:arm64 libunistring-dev:arm64 gcc-aarch64-linux-gnu pkg-config-aarch64-linux-gnu
           git submodule update --init --recursive
       - name: Build
         run: meson --cross-file crossfiles/aarch64.txt --prefix /usr --buildtype=release build && cd build && ninja
@@ -164,9 +164,9 @@ jobs:
         uses: actions/checkout@v2
       - name: Dependencies
         run: |
-          sudo dpkg --add-architecture armhf
-          sudo apt update
-          sudo apt install git meson libgcrypt-dev:armhf libusbmuxd-dev:armhf libimobiledevice-dev:armhf libunistring-dev:armhf gcc-arm-linux-gnueabi pkg-config-arm-linux-gnueabi
+          dpkg --add-architecture armhf
+          apt update
+          apt install git meson libgcrypt-dev:armhf libusbmuxd-dev:armhf libimobiledevice-dev:armhf libunistring-dev:armhf gcc-arm-linux-gnueabi pkg-config-arm-linux-gnueabi
           git submodule update --init --recursive
       - name: Build
         run: meson --cross-file crossfiles/armv7.txt --prefix /usr --buildtype=release build && cd build && ninja
