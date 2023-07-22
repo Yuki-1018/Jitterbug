@@ -125,7 +125,7 @@ jobs:
           sudo dpkg --add-architecture i386
           sudo apt update
           sudo apt --fix-broken install
-          sudo apt install meson libglib2.0-dev:i386 libgcrypt-dev:i386 libusbmuxd-dev:i386 libimobiledevice-dev:i386 libunistring-dev:i386 gcc-i686-linux-gnu pkg-config-i686-linux-gnu
+          sudo apt install meson libselinux1-dev:i386 libmount-dev:i386 libglib2.0-0:i386 libglib2.0-dev:i386 libgcrypt-dev:i386 libusbmuxd-dev:i386 libimobiledevice-dev:i386 libunistring-dev:i386 gcc-i686-linux-gnu pkg-config-i686-linux-gnu
       - name: Build
         run: meson --cross-file crossfiles/i686.txt --prefix /usr --buildtype=release build && cd build && ninja
       - name: Upload
