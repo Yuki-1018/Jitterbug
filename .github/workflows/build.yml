@@ -95,7 +95,7 @@ jobs:
         with:
           name: jitterbugpair-macos
           path: build/jitterbugpair
-  build-ubuntu-x86_64:
+  build-ubuntu:
     name: JitterbugPair (Ubuntu, x86_64)
     runs-on: ubuntu-20.04
     steps:
@@ -110,7 +110,7 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v2
         with:
-          name: jitterbugpair-linux-x86_64
+          name: jitterbugpair-linux
           path: build/jitterbugpair
   build-ubuntu-i686:
     name: JitterbugPair (Ubuntu, i686)
