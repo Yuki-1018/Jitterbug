@@ -123,7 +123,7 @@ jobs:
         run: |
           dpkg --add-architecture i386
           apt-get update
-          apt-get install -y git meson libgcrypt-dev:i386 libusbmuxd-dev:i386 libimobiledevice-dev:i386 libunistring-dev:i386 gcc-i686-linux-gnu pkg-config-i686-linux-gnu
+          DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install -y git meson libgcrypt-dev:i386 libusbmuxd-dev:i386 libimobiledevice-dev:i386 libunistring-dev:i386 gcc-i686-linux-gnu pkg-config-i686-linux-gnu
           git submodule update --init --recursive
       - name: Build
         run: meson --cross-file crossfiles/i686.txt --prefix /usr --buildtype=release build && cd build && ninja
@@ -140,10 +140,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Dependencies
-        run: |
+        run: | # took from melonDS code
           dpkg --add-architecture arm64
+          sh -c "sed \"s|^deb \([a-z\.:/]*\) \([a-z\-]*\) \(.*\)$|deb [arch=amd64] \1 \2 \3\ndeb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports \2 \3|\" /etc/apt/sources.list > /etc/apt/sources.list.new"
+          rm /etc/apt/sources.list
+          mv /etc/apt/sources.list{.new,}
           apt-get update
-          apt-get install -y git meson libgcrypt-dev:arm64 libusbmuxd-dev:arm64 libimobiledevice-dev:arm64 libunistring-dev:arm64 gcc-aarch64-linux-gnu pkg-config-aarch64-linux-gnu
+          DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install -y git meson libgcrypt-dev:arm64 libusbmuxd-dev:arm64 libimobiledevice-dev:arm64 libunistring-dev:arm64 gcc-aarch64-linux-gnu pkg-config-aarch64-linux-gnu
           git submodule update --init --recursive
       - name: Build
         run: meson --cross-file crossfiles/aarch64.txt --prefix /usr --buildtype=release build && cd build && ninja
@@ -162,8 +165,11 @@ jobs:
       - name: Dependencies
         run: |
           dpkg --add-architecture armhf
+          sh -c "sed \"s|^deb \([a-z\.:/]*\) \([a-z\-]*\) \(.*\)$|deb [arch=amd64] \1 \2 \3\ndeb [arch=armhf] http://ports.ubuntu.com/ubuntu-ports \2 \3|\" /etc/apt/sources.list > /etc/apt/sources.list.new"
+          rm /etc/apt/sources.list
+          mv /etc/apt/sources.list{.new,}
           apt-get update
-          apt-get install -y git meson libgcrypt-dev:armhf libusbmuxd-dev:armhf libimobiledevice-dev:armhf libunistring-dev:armhf gcc-arm-linux-gnueabi pkg-config-arm-linux-gnueabi
+          DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install -y git meson libgcrypt-dev:armhf libusbmuxd-dev:armhf libimobiledevice-dev:armhf libunistring-dev:armhf gcc-arm-linux-gnueabi pkg-config-arm-linux-gnueabi
           git submodule update --init --recursive
       - name: Build
         run: meson --cross-file crossfiles/armv7.txt --prefix /usr --buildtype=release build && cd build && ninja
