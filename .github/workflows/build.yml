@@ -115,6 +115,8 @@ jobs:
   build-ubuntu-i686:
     name: JitterbugPair (Ubuntu, i686)
     runs-on: ubuntu-20.04
+    container:
+      image: debian:latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -135,6 +137,8 @@ jobs:
   build-ubuntu-aarch64:
     name: JitterbugPair (Ubuntu, AArch64)
     runs-on: ubuntu-20.04
+    container:
+      image: debian:latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -155,6 +159,8 @@ jobs:
   build-ubuntu-armv7:
     name: JitterbugPair (Ubuntu, ARMv7)
     runs-on: ubuntu-20.04
+    container:
+      image: debian:latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
