@@ -122,7 +122,7 @@ jobs:
         run: |
           dpkg --add-architecture i386
           apt-get update
-          DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install -y git meson libgcrypt-dev:i386 libusbmuxd-dev:i386 libimobiledevice-dev:i386 libunistring-dev:i386 gcc-i686-linux-gnu pkg-config-i686-linux-gnu
+          DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install -y gcc git meson libgcrypt-dev:i386 libusbmuxd-dev:i386 libimobiledevice-dev:i386 libunistring-dev:i386 gcc-i686-linux-gnu pkg-config-i686-linux-gnu
       - name: Checkout
         uses: actions/checkout@v2
         with:
@@ -147,7 +147,7 @@ jobs:
           rm /etc/apt/sources.list
           mv /etc/apt/sources.list{.new,}
           apt-get update
-          DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install -y git meson libgcrypt-dev:arm64 libusbmuxd-dev:arm64 libimobiledevice-dev:arm64 libunistring-dev:arm64 gcc-aarch64-linux-gnu pkg-config-aarch64-linux-gnu
+          DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install -y gcc git meson libgcrypt-dev:arm64 libusbmuxd-dev:arm64 libimobiledevice-dev:arm64 libunistring-dev:arm64 gcc-aarch64-linux-gnu pkg-config-aarch64-linux-gnu
       - name: Checkout
         uses: actions/checkout@v2
         with:
@@ -172,7 +172,7 @@ jobs:
           rm /etc/apt/sources.list
           mv /etc/apt/sources.list{.new,}
           apt-get update
-          DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install -y git meson libgcrypt-dev:armhf libusbmuxd-dev:armhf libimobiledevice-dev:armhf libunistring-dev:armhf gcc-arm-linux-gnueabi pkg-config-arm-linux-gnueabi
+          DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install -y gcc git meson libgcrypt-dev:armhf libusbmuxd-dev:armhf libimobiledevice-dev:armhf libunistring-dev:armhf gcc-arm-linux-gnueabi pkg-config-arm-linux-gnueabi
       - name: Checkout
         uses: actions/checkout@v2
         with:
