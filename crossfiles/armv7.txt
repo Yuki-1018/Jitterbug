@@ -1,0 +1,12 @@
+[binaries]
+c = 'arm-linux-gnueabi-gcc'
+cpp = 'arm-linux-gnueabi-g++'
+ar = 'arm-linux-gnueabi-gcc-ar'
+strip = 'arm-linux-gnueabi-strip'
+pkgconfig = 'arm-linux-gnueabi-pkg-config'
+
+[host_machine]
+system = 'linux'
+cpu_family = 'armv7'
+cpu = 'armv7'
+endian = 'little'
