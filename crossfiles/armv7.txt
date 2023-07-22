@@ -1,9 +1,9 @@
 [binaries]
-c = 'arm-linux-gnueabi-gcc'
-cpp = 'arm-linux-gnueabi-g++'
-ar = 'arm-linux-gnueabi-gcc-ar'
-strip = 'arm-linux-gnueabi-strip'
-pkgconfig = 'arm-linux-gnueabi-pkg-config'
+c = 'arm-linux-gnueabihf-gcc'
+cpp = 'arm-linux-gnueabihf-g++'
+ar = 'arm-linux-gnueabihf-gcc-ar'
+strip = 'arm-linux-gnueabihf-strip'
+pkgconfig = 'arm-linux-gnueabihf-pkg-config'
 
 [host_machine]
 system = 'linux'
