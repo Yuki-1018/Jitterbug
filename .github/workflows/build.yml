@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: recursive
       - name: Dependencies
@@ -33,7 +33,7 @@ jobs:
       - name: Build
         run: meson --prefix /usr --buildtype=release build && cd build && ninja
       - name: Upload
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: jitterbugpair-linux
           path: build/jitterbugpair
@@ -49,13 +49,13 @@ jobs:
           apt-get update
           DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install -y gcc git meson libgcrypt-dev:i386 libusbmuxd-dev:i386 libimobiledevice-dev:i386 libunistring-dev:i386 gcc-i686-linux-gnu pkg-config-i686-linux-gnu dpkg-dev
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: recursive
       - name: Build
         run: meson --cross-file crossfiles/i686.txt --prefix /usr --buildtype=release build && cd build && ninja
       - name: Upload
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: jitterbugpair-linux-i686
           path: build/jitterbugpair
@@ -74,13 +74,13 @@ jobs:
           apt-get update
           DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install -y gcc git meson libgcrypt-dev:arm64 libusbmuxd-dev:arm64 libimobiledevice-dev:arm64 libunistring-dev:arm64 gcc-aarch64-linux-gnu pkg-config-aarch64-linux-gnu dpkg-dev
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: recursive
       - name: Build
         run: meson --cross-file crossfiles/aarch64.txt --prefix /usr --buildtype=release build && cd build && ninja
       - name: Upload
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: jitterbugpair-linux-aarch64
           path: build/jitterbugpair
@@ -99,13 +99,13 @@ jobs:
           apt-get update
           DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install -y gcc git meson libgcrypt-dev:armhf libusbmuxd-dev:armhf libimobiledevice-dev:armhf libunistring-dev:armhf gcc-arm-linux-gnueabihf pkg-config-arm-linux-gnueabihf dpkg-dev
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: recursive
       - name: Build
         run: meson --cross-file crossfiles/armv7.txt --prefix /usr --buildtype=release build && cd build && ninja
       - name: Upload
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: jitterbugpair-linux-armv7
           path: build/jitterbugpair
