@@ -25,7 +25,7 @@ jobs:
     runs-on: macos-10.15
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: recursive
       - name: Build
@@ -47,7 +47,7 @@ jobs:
     runs-on: macos-10.15
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: recursive
       - name: Build
@@ -55,7 +55,7 @@ jobs:
       - name: Compress
         run: tar cf JitterbugLite.xcarchive.tgz JitterbugLite.xcarchive
       - name: Upload
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@3
         with:
           name: JitterbugLite
           path: JitterbugLite.xcarchive.tgz
@@ -64,7 +64,7 @@ jobs:
     runs-on: macos-10.15
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: recursive
       - name: Build
@@ -81,7 +81,7 @@ jobs:
     runs-on: macos-10.15
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: recursive
       - name: Dependencies
@@ -91,7 +91,7 @@ jobs:
         env:
           PKG_CONFIG_PATH: /usr/local/opt/openssl@1.1/lib/pkgconfig
       - name: Upload
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: jitterbugpair-macos
           path: build/jitterbugpair
@@ -100,7 +100,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: recursive
       - name: Dependencies
@@ -108,7 +108,7 @@ jobs:
       - name: Build
         run: meson --prefix /usr --buildtype=release build && cd build && ninja
       - name: Upload
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: jitterbugpair-linux
           path: build/jitterbugpair
@@ -125,13 +125,13 @@ jobs:
             mingw64/mingw-w64-x86_64-libusbmuxd
             mingw64/mingw-w64-x86_64-libimobiledevice
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: recursive
       - name: Build
         run: msys2 -c 'meson --buildtype=release build && cd build && meson compile'
       - name: Upload
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: jitterbugpair-win64
           path: |
@@ -144,7 +144,7 @@ jobs:
     if: github.event_name == 'release' || github.event.inputs.test_release == 'true'
     steps:
       - name: Download Artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: Jitterbug
       - name: Package IPA
@@ -177,7 +177,7 @@ jobs:
     if: github.event_name == 'release' || github.event.inputs.test_release == 'true'
     steps:
       - name: Download Artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: JitterbugLite
       - name: Package IPA
